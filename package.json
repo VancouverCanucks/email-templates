@@ -1,0 +1,18 @@
+{
+  "name": "canucks-email-templates",
+  "version": "0.0.0",
+  "description": "Easily create Canucks email templates here and send them out via the Mailgun.com API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:VancouverCanucks/email-templates.git"
+  },
+  "author": "mike.timofiiv@gmail.com",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/VancouverCanucks/email-templates/issues"
+  }
+}
