@@ -1,7 +1,7 @@
-var Mailgun = require('mailgun').Mailgun;
-var config = require('config/config.js');
+//var Mailgun = require('mailgun').Mailgun;
+var config = require('./config/config.js');
 
-var mg = new Mailgun('some-api-key');
+var mg = new Mailgun(config.apikey);
 mg.sendText('example@example.com', ['Recipient 1 <rec1@example.com>', 'rec2@example.com'],
   'This is the subject',
   'This is the text',

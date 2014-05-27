@@ -1,3 +1,4 @@
-module.exports = {
-  apikey: 'key-5yxwgzbqx6470gdwtnebbml3h0gqiat0'
-}
+exports.apikey = '0';
+exports.smtpHost = 'smtp.mailgun.org';
+exports.smtpLogin = '0';
+exports.smtpPassword = '0';
