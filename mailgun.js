@@ -1,12 +1,25 @@
-//var Mailgun = require('mailgun').Mailgun;
+#!/usr/bin/env node
+
+var Mailgun = require('mailgun').Mailgun;
+var prompt = require('prompt');
 var config = require('./config/config.js');
 
-var mg = new Mailgun(config.apikey);
-mg.sendText('example@example.com', ['Recipient 1 <rec1@example.com>', 'rec2@example.com'],
-  'This is the subject',
-  'This is the text',
-  'noreply@example.com', {},
-  function(err) {
-    if (err) console.log('Oh noes: ' + err);
-    else     console.log('Success');
+var sendVars = {};
+
+prompt.start();
+
+prompt.get(['recipient', 'subject', 'content'], function(e, r) {
+  var mg = new Mailgun(config.apikey);
+
+  mg.sendText(
+    config.smtpLogin,
+    r.recipient,
+    r.subject,
+    r.content,
+    config.smtpLogin,
+    {},
+    function(err) {
+      if (err) console.log('Oh noes: ' + err);
+      else     console.log('Success');
+  });
 });

@@ -14,5 +14,9 @@
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/VancouverCanucks/email-templates/issues"
+  },
+  "devDependencies": {
+    "mailgun": "*",
+    "prompt": "*"
   }
 }
