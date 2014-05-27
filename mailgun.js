@@ -11,11 +11,10 @@ prompt.start();
 prompt.get(['recipient', 'subject', 'content'], function(e, r) {
   var mg = new Mailgun(config.apikey);
 
-  mg.sendText(
+  mg.sendRaw(
     config.smtpLogin,
     r.recipient,
-    r.subject,
-    r.content,
+    '\nFrom: ' + config.smtpLogin + '\nContent-Type: text/html; charset=utf-8' + '\nSubject: ' + r.subject + '\n' + r.content,
     config.smtpLogin,
     {},
     function(err) {
