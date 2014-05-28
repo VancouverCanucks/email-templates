@@ -10,21 +10,16 @@ var gun = new Mailgun({ apiKey: config.apikey, domain: config.domain });
 prompt.start();
 prompt.get(['recipient', 'subject', 'content'], function(e, r) {
   var gun = new Mailgun({ apiKey: config.apikey, domain: config.domain });
+  var template = fs.readFileSync('./templates/' + r.content).toString();
 
-  fs.readFileSync('./templates/' + r.content, function(e, data) {
+  var envelope = {
+    from: config.smtpLogin,
+    subject: r.subject,
+    to: r.recipient,
+    html: template
+  };
 
-    console.log(e);
-
-    var envelope = {
-      from: config.smtpLogin,
-      subject: r.subject,
-      to: r.recipient,
-      html: data
-    };
-
-    gun.messages().send(envelope, function(e, body) {
-      console.log(body);
-    });
+  gun.messages().send(envelope, function(e, body) {
+    console.log(body);
   });
-
 });
