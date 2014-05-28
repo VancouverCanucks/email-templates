@@ -1,24 +1,30 @@
 #!/usr/bin/env node
 
-var Mailgun = require('mailgun').Mailgun;
+var Mailgun = require('mailgun-js');
 var prompt = require('prompt');
+var fs = require('fs');
 var config = require('./config/config.js');
 
-var sendVars = {};
+var gun = new Mailgun({ apiKey: config.apikey, domain: config.domain });
 
 prompt.start();
-
 prompt.get(['recipient', 'subject', 'content'], function(e, r) {
-  var mg = new Mailgun(config.apikey);
+  var gun = new Mailgun({ apiKey: config.apikey, domain: config.domain });
 
-  mg.sendRaw(
-    config.smtpLogin,
-    r.recipient,
-    '\nFrom: ' + config.smtpLogin + '\nContent-Type: text/html; charset=utf-8' + '\nSubject: ' + r.subject + '\n' + r.content,
-    config.smtpLogin,
-    {},
-    function(err) {
-      if (err) console.log('Oh noes: ' + err);
-      else     console.log('Success');
+  fs.readFileSync('./templates/' + r.content, function(e, data) {
+
+    console.log(e);
+
+    var envelope = {
+      from: config.smtpLogin,
+      subject: r.subject,
+      to: r.recipient,
+      html: data
+    };
+
+    gun.messages().send(envelope, function(e, body) {
+      console.log(body);
+    });
   });
+
 });

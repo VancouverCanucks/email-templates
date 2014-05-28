@@ -16,7 +16,7 @@
     "url": "https://github.com/VancouverCanucks/email-templates/issues"
   },
   "devDependencies": {
-    "mailgun": "*",
+    "mailgun-js": "*",
     "prompt": "*"
   }
 }
