@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "mailgun-js": "*",
-    "prompt": "*"
+    "prompt": "*",
+    "harp": "*"
   }
 }
