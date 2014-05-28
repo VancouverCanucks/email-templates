@@ -1,4 +1,5 @@
 exports.apikey = '0';
+exports.domain = 'noname.com';
 exports.smtpHost = 'smtp.mailgun.org';
 exports.smtpLogin = '0';
 exports.smtpPassword = '0';
