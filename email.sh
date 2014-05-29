@@ -7,7 +7,6 @@ then
     ./mailgun.js
   elif [ $1 = 'serve' ]
   then
-    cd assets
     harp server
   else
     echo 'Invalid argument'
