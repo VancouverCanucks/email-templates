@@ -20,6 +20,6 @@ prompt.get(['recipient', 'subject', 'content'], function(e, r) {
   };
 
   gun.messages().send(envelope, function(e, body) {
-    console.log(body);
+    console.log(body.message);
   });
 });
