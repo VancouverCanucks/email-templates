@@ -4,7 +4,8 @@
   "description": "Easily create Canucks email templates here and send them out via the Mailgun.com API.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "harp server",
+    "send": "node mailgun"
   },
   "repository": {
     "type": "git",

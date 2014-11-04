@@ -12,6 +12,9 @@ prompt.get(['recipient', 'subject', 'content'], function(e, r) {
   var gun = new Mailgun({ apiKey: config.apikey, domain: config.domain });
   var template = fs.readFileSync('./templates/' + r.content).toString();
 
+  r.recipient = (r.recipient == "") ? config.defaultEmail : r.recipient;
+  r.subject = (r.subject == "") ? config.defaultSubject : r.subject;
+
   var envelope = {
     from: config.smtpLogin,
     subject: r.subject,
